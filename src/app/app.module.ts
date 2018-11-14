@@ -12,13 +12,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
-  //{ path: 'list', component: ListComponent},
   {
     path: 'diveSites',
     component: ListComponent,
     data: { title: 'Product Details' }
   },
-  { path: '', redirectTo: '/diveSites/', pathMatch: 'full'}
+  {
+    path: 'getDiveSiteById/:id',
+    component: ListComponent,
+    data: { title: 'Product Details' }
+  },
+  { path: '', redirectTo: '/diveSites', pathMatch: 'full'}
 ];
 
 
@@ -33,7 +37,7 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule
   ],
-  providers: [AppComponent],
+  providers: [IssueService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

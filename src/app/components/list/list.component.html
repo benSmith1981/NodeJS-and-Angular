@@ -1,8 +1,17 @@
 <h2>Dive List</h2>
-<div *ngIf="product" class="products">
+<!-- <div *ngIf="product" class="products">
   <h2>{{product.name | uppercase}} Details</h2>
-  <div><span>Description: </span>{{product.description}}</div>
+  <div><span>Description: </span>{{product.description}}</div> -->
 <!--   <div><span>Price: </span>{{product.prod_price}}</div>
   <div><span>Update Date: </span>{{product.updated_at | date}}</div> -->
-
-</div>
+<!--   </div>
+ -->
+<ul class="products">
+  <li *ngFor="let p of products.dataResponse; let i=index;">
+    <a routerLink="/getDiveSiteById/{p._id}">
+      <span class="badge">{{i+1}}</span> {{p.name}}
+    </a>
+    <button class="delete" title="delete product"
+      (click)="delete(p._id)">x</button>
+  </li>
+</ul>
