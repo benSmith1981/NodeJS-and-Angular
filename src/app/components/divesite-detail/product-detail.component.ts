@@ -17,7 +17,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
   
-    this.issueService.getDiveSiteById('62625').subscribe((data: {}) => {
+    this.issueService.getDiveSiteById(this.route.snapshot.params['id']).subscribe((data: {}) => {
       console.log(data);
       this.product = data.dataResponse[0];
     });
