@@ -34,7 +34,7 @@ export class IssueService {
     const httpOptions2 = {
       headers: headersObject
     };
-    console.log("getDiveSiteById")
+    console.log("getDiveSiteById..."+id)
     return this.http
         .get(uri+'/divesites/?id='+ id)
         .pipe(map(this.extractData));

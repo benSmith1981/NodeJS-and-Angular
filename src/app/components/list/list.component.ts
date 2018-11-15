@@ -20,18 +20,26 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     console.log("ListComponent")
-    /*
-    this.issueService.getDiveSiteById('65465').subscribe((data: {}) => {
 
-      console.log(data);
-      this.product = data;
-    });
-    */
-    
+    this.divesites()
+  }
+
+  divesites() {
     this.products = [];
     this.issueService.getDiveSites().subscribe((data: {}) => {
       //console.log("Products "+data.dataResponse);
       this.products = data;
+    });
+  }
+
+  diveSiteBy(id) {
+    console.log("diveSiteBy(id) "+id);
+    this.issueService.getDiveSiteById(id).subscribe((data: {}) => {
+      console.log(data);
+
+      this.router.navigate(['divesite-detail/'+id]);
+      console.log(data);
+      this.product = data;
     });
   }
 

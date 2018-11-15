@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ListComponent } from './components/list/list.component';
+import { DetailComponent } from './components/divesite-detail/product-detail.component';
 
 import { IssueService } from './issue.service';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,11 +16,11 @@ const appRoutes: Routes = [
   {
     path: 'diveSites',
     component: ListComponent,
-    data: { title: 'Product Details' }
+    data: { title: 'Deep Dive List' }
   },
   {
-    path: 'getDiveSiteById/:id',
-    component: ListComponent,
+    path: 'divesite-detail/:id',
+    component: DetailComponent,
     data: { title: 'Product Details' }
   },
   { path: '', redirectTo: '/diveSites', pathMatch: 'full'}
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent
+    ListComponent,
+    DetailComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

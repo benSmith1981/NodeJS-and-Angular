@@ -7,17 +7,21 @@ import { IssueService } from '../../issue.service';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailComponent implements OnInit {
+export class DetailComponent implements OnInit {
 
   product:any;
 
-  constructor(public issueService:IssueService, private route: ActivatedRoute, private router: Router) { }
+  constructor(public issueService:IssueService, private route: ActivatedRoute, private router: Router) { 
+    console.log("DetailComponent")
+  }
 
   ngOnInit() {
-    this.issueService.getDiveSiteById(this.route.snapshot.params['id']).subscribe((data: {}) => {
+  
+    this.issueService.getDiveSiteById('62625').subscribe((data: {}) => {
       console.log(data);
-      this.product = data;
+      this.product = data.dataResponse[0];
     });
+    
   }
 
 }
