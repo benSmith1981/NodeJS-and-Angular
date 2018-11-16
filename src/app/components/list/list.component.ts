@@ -37,7 +37,7 @@ export class ListComponent implements OnInit {
     this.issueService.getDiveSiteById(id).subscribe((data: {}) => {
       console.log(data);
 
-      this.router.navigate(['divesite-detail/'+id]);
+      this.router.navigate(['divesites/divesites/divesite-detail/'+id]);
       console.log(data);
       this.product = data;
     });
