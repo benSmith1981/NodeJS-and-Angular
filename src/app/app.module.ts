@@ -20,20 +20,64 @@ const diveSiteComponents : Routes = [
     data: { title: 'Deep Dive List' }
   },
   {
-    path: 'divesite-detail/:id',
+    path: 'diveSite/:id',
+    component: DetailComponent,
+    data: { title: 'Product Details' }
+  },
+  {
+    path: 'diveShop/:id',
+    component: DetailComponent,
+    data: { title: 'Product Details' }
+  },
+  {
+    path: 'trip/:id',
     component: DetailComponent,
     data: { title: 'Product Details' }
   }
 ];
 const appRoutes: Routes = [
+
+
   {
-    path: 'divesites/:id', //'divesite-detail/:id',
+    path: 'diveSite/:id', //'divesite-detail/:id',
+    component: DetailComponent,  
+    children: diveSiteComponents // the '' path will load UserComponent
+  },
+  {
+    path: 'diveShop/:id', //'divesite-detail/:id',
+    component: DetailComponent,  
+    children: diveSiteComponents // the '' path will load UserComponent
+  }
+  ,
+  {
+    path: 'trip/:id', //'divesite-detail/:id',
+    component: DetailComponent,  
+    children: diveSiteComponents // the '' path will load UserComponent
+  }
+/*
+  {
+    path: 'diveSite/:id', //'divesite-detail/:id',
+    component: DetailComponent,  
+    redirectTo: 'diveSite/:id',
+    pathMatch: 'full'
+  }
+
+
+
+  {
+    path: 'details/:id', //'divesite-detail/:id',
     component: ParentComponent,  
     children: diveSiteComponents // the '' path will load UserComponent
   }
+  ,
+  {
+    path: 'diveSite/:id', //'divesite-detail/:id',
+    component: DetailComponent,  
+    children: diveSiteComponents // the '' path will load UserComponent
+  }
+  */
+
 ];
-
-
 
 @NgModule({
   declarations: [
@@ -43,7 +87,7 @@ const appRoutes: Routes = [
     DetailComponent
   ],
   imports: [
-    RouterModule.forRoot(appRoutes, {useHash: true}),
+    RouterModule.forRoot(appRoutes, {onSameUrlNavigation: 'reload'}), // , {useHash: true}),
     FormsModule,
     BrowserModule,
     HttpClientModule

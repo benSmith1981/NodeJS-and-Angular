@@ -4,6 +4,8 @@ import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
 const uri = 'https://diveapi.herokuapp.com/api';
+//const uri = 'mongodb://localhost/api/'
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -23,6 +25,21 @@ export class IssueService {
 
   }
 
+//http://diveapi.herokuapp.com/api/trips/?id=9F6175E0-BF0F-40C0-8E4A-611427BB8C39
+  getTripById(id) : Observable<any> {
+    return this.http
+        .get(uri+'/trips/?id='+ id)
+        .pipe(map(this.extractData));
+  }
+
+
+//http://diveapi.herokuapp.com/api/diveShops/?id=56310
+  getShopById(id) : Observable<any> {
+    return this.http
+        .get(uri+'/diveShops/?id='+ id)
+        .pipe(map(this.extractData));
+  }
+  
   getDiveSiteById(id) : Observable<any> {
 
     let headersObject: HttpHeaders = new HttpHeaders();
